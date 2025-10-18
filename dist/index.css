@@ -1,0 +1,48 @@
+.head {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 40px;
+  border-bottom: 1px solid #f3f3f3;
+}
+.headerleft {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-grow: 1;
+}
+.headertext h3 {
+  margin: 0;
+  font-weight: 500;
+  font-size: 24px;
+}
+.headertext p {
+  margin: 0;
+  font-size: 14px;
+  color: #9c9c9c;
+}
+.headerright {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+}
+.headerright li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  position: relative;
+}
+.headerright li span {
+  font-weight: 500;
+}
+.flex {
+  display: flex;
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} /*# sourceMappingURL=index.css.map */

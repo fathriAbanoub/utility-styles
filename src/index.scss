@@ -1,0 +1,17 @@
+// don't forget to import all components
+@use "./components/header";
+@use "./components/header-left";
+@use "./components/header-text";
+@use "./components/header-right";
+// add utility classes here
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// more utilities as needed

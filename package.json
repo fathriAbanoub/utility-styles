@@ -1,0 +1,32 @@
+{
+  "name": "bob-styles",
+  "version": "1.0.0",
+  "description": "A collection of reusable CSS utility classes for common UI components and layouts",
+  "main": "dist/index.css",
+  "sass": "src/index.scss",
+  "scripts": {
+    "build": "sass src/index.scss dist/index.css --style compressed",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "keywords": [
+    "scss",
+    "css",
+    "utilities",
+    "sneaker-store",
+    "styling",
+    "flexbox"
+  ],
+  "author": "Bob Ayad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fathriAbanoub/utility-styles/issues"
+  },
+  "homepage": "https://github.com/fathriAbanoub/utility-styles#readme",
+  "devDependencies": {
+    "sass": "^1.93.2"
+  }
+}
