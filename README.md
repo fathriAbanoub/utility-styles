@@ -13,7 +13,7 @@ A collection of reusable CSS utility classes for common UI components and layout
 npm install bob-styles
 
 ## Usage
-@import 'utility-styles/src/index.scss';
+@import 'bob-styles/src/index.scss';
 
 ## Available Classes
 Header Components
