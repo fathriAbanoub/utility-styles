@@ -1,0 +1,12 @@
+@use "sass:map";
+@use "../config/code-fonts" as *;
+@use "../mixins/font-loader" as *;
+@use "../mixins/font-detection" as *;
+
+@each $key, $font in $code-fonts {
+  $url: map.get($font, "url");
+  @import url("#{$url}");
+}
+
+@include generate-font-classes($code-fonts, $code-font-fallback-order, "code");
+@include font-loading-detection($code-fonts, $code-font-fallback-order, "code");

@@ -1,0 +1,20 @@
+@use "sass:map";
+@use "../config/ecommerce-fonts" as *;
+@use "../mixins/font-loader" as *;
+@use "../mixins/font-detection" as *;
+
+@each $key, $font in $ecommerce-fonts {
+  $url: map.get($font, "url");
+  @import url("#{$url}");
+}
+
+@include generate-font-classes(
+  $ecommerce-fonts,
+  $ecommerce-font-fallback-order,
+  "ecommerce"
+);
+@include font-loading-detection(
+  $ecommerce-fonts,
+  $ecommerce-font-fallback-order,
+  "ecommerce"
+);

@@ -1,0 +1,39 @@
+$ui-fonts: (
+  "primary": (
+    name: "Inter",
+    weights: (
+      300: "Light",
+      400: "Regular",
+      500: "Medium",
+      600: "SemiBold",
+      700: "Bold",
+    ),
+    url:
+      "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap",
+  ),
+  "secondary": (
+    name: "Roboto",
+    weights: (
+      300: "Light",
+      400: "Regular",
+      500: "Medium",
+      700: "Bold",
+    ),
+    url:
+      "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap",
+  ),
+  "tertiary": (
+    name: "Poppins",
+    weights: (
+      300: "Light",
+      400: "Regular",
+      500: "Medium",
+      600: "SemiBold",
+      700: "Bold",
+    ),
+    url:
+      "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap",
+  ),
+);
+
+$ui-font-fallback-order: ("primary", "secondary", "tertiary");

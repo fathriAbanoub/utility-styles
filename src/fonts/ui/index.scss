@@ -1,0 +1,12 @@
+@use "sass:map";
+@use "../config/ui-fonts" as *;
+@use "../mixins/font-loader" as *;
+@use "../mixins/font-detection" as *;
+
+@each $key, $font in $ui-fonts {
+  $url: map.get($font, "url");
+  @import url("#{$url}");
+}
+
+@include generate-font-classes($ui-fonts, $ui-font-fallback-order, "ui");
+@include font-loading-detection($ui-fonts, $ui-font-fallback-order, "ui");

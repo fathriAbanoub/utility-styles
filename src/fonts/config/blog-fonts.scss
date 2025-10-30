@@ -1,0 +1,33 @@
+$blog-fonts: (
+  "primary": (
+    name: "Merriweather",
+    weights: (
+      300: "Light",
+      400: "Regular",
+      700: "Bold",
+    ),
+    url:
+      "https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap",
+  ),
+  "secondary": (
+    name: "Lora",
+    weights: (
+      400: "Regular",
+      700: "Bold",
+    ),
+    url:
+      "https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap",
+  ),
+  "tertiary": (
+    name: "Crimson Text",
+    weights: (
+      400: "Regular",
+      600: "SemiBold",
+      700: "Bold",
+    ),
+    url:
+      "https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&display=swap",
+  ),
+);
+
+$blog-font-fallback-order: ("primary", "secondary", "tertiary");

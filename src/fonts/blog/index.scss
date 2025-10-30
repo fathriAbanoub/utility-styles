@@ -1,0 +1,12 @@
+@use "sass:map";
+@use "../config/blog-fonts" as *;
+@use "../mixins/font-loader" as *;
+@use "../mixins/font-detection" as *;
+
+@each $key, $font in $blog-fonts {
+  $url: map.get($font, "url");
+  @import url("#{$url}");
+}
+
+@include generate-font-classes($blog-fonts, $blog-font-fallback-order, "blog");
+@include font-loading-detection($blog-fonts, $blog-font-fallback-order, "blog");

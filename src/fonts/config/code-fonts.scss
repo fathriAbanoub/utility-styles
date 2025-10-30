@@ -1,0 +1,38 @@
+$code-fonts: (
+  "primary": (
+    name: "Fira Code",
+    weights: (
+      300: "Light",
+      400: "Regular",
+      500: "Medium",
+      600: "SemiBold",
+      700: "Bold",
+    ),
+    url:
+      "https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap",
+  ),
+  "secondary": (
+    name: "JetBrains Mono",
+    weights: (
+      400: "Regular",
+      700: "Bold",
+    ),
+    url:
+      "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap",
+  ),
+  "tertiary": (
+    name: "Source Code Pro",
+    weights: (
+      200: "ExtraLight",
+      300: "Light",
+      400: "Regular",
+      600: "SemiBold",
+      700: "Bold",
+      900: "Black",
+    ),
+    url:
+      "https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400;600;700;900&display=swap",
+  ),
+);
+
+$code-font-fallback-order: ("primary", "secondary", "tertiary");

@@ -1,0 +1,26 @@
+@use "sass:map";
+
+// Usage: @include font-loading-detection($fonts-config-map, $fallback-order-list, $category-name);
+@mixin font-loading-detection($fonts-config, $fallback-order, $category) {
+  :root {
+    @each $key in $fallback-order {
+      $font: map.get($fonts-config, $key);
+      $name: map.get($font, "name");
+
+      --#{$category}-#{$key}-loaded: 0;
+    }
+  }
+
+  .#{$category}-font-loading {
+    transition: font-family 0.3s ease;
+  }
+
+  @each $key in $fallback-order {
+    $font: map.get($fonts-config, $key);
+    $name: map.get($font, "name");
+
+    .#{$category}-#{$key}-loaded {
+      --#{$category}-#{$key}-loaded: 1;
+    }
+  }
+}

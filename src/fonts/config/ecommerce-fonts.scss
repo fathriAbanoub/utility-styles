@@ -1,0 +1,37 @@
+$ecommerce-fonts: (
+  "primary": (
+    name: "Montserrat",
+    weights: (
+      300: "Light",
+      400: "Regular",
+      500: "Medium",
+      600: "SemiBold",
+      700: "Bold",
+    ),
+    url:
+      "https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap",
+  ),
+  "secondary": (
+    name: "Lato",
+    weights: (
+      300: "Light",
+      400: "Regular",
+      700: "Bold",
+    ),
+    url:
+      "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",
+  ),
+  "tertiary": (
+    name: "Nunito",
+    weights: (
+      300: "Light",
+      400: "Regular",
+      600: "SemiBold",
+      700: "Bold",
+    ),
+    url:
+      "https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap",
+  ),
+);
+
+$ecommerce-font-fallback-order: ("primary", "secondary", "tertiary");

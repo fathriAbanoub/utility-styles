@@ -1,0 +1,130 @@
+@use "sass:map";
+@use "sass:list";
+
+@function get-font-weight($font, $weight) {
+  $font-config: map.get($font, "weights");
+  @return map.get($font-config, $weight);
+}
+
+@function find-closest-weight($font, $weight) {
+  $font-config: map.get($font, "weights");
+  $available-weights: map.keys($font-config);
+
+  @if list.index($available-weights, $weight) {
+    @return $weight;
+  }
+
+  $closest: null;
+  $difference: 999;
+
+  @each $available-weight in $available-weights {
+    $current-difference: abs($available-weight - $weight);
+    @if $current-difference < $difference {
+      $closest: $available-weight;
+      $difference: $current-difference;
+    }
+  }
+
+  @return $closest;
+}
+
+// Usage: @include generate-font-stack($fonts-config-map, $fallback-order-list, $category-name, $primary-key, $weight);
+@mixin generate-font-stack(
+  $fonts-config,
+  $fallback-order,
+  $category,
+  $primary-key,
+  $weight: 400
+) {
+  $primary-font: map.get($fonts-config, $primary-key);
+  $primary-name: map.get($primary-font, "name");
+  $primary-weight: find-closest-weight($primary-font, $weight);
+
+  $font-stack: $primary-name;
+
+  @each $key in $fallback-order {
+    @if $key != $primary-key {
+      $fallback-font: map.get($fonts-config, $key);
+      $fallback-name: map.get($fallback-font, "name");
+      $font-stack: list.append($font-stack, $fallback-name, comma);
+    }
+  }
+
+  @if $category == "ui" or $category == "ecommerce" {
+    $font-stack: list.append($font-stack, -apple-system, comma);
+    $font-stack: list.append($font-stack, BlinkMacSystemFont, comma);
+    $font-stack: list.append($font-stack, "Segoe UI", comma);
+    $font-stack: list.append($font-stack, Roboto, comma);
+    $font-stack: list.append($font-stack, Oxygen, comma);
+    $font-stack: list.append($font-stack, Ubuntu, comma);
+    $font-stack: list.append($font-stack, Cantarell, comma);
+    $font-stack: list.append($font-stack, "Open Sans", comma);
+    $font-stack: list.append($font-stack, "Helvetica Neue", comma);
+    $font-stack: list.append($font-stack, sans-serif, comma);
+  } @else if $category == "blog" {
+    $font-stack: list.append($font-stack, Georgia, comma);
+    $font-stack: list.append($font-stack, "Times New Roman", comma);
+    $font-stack: list.append($font-stack, serif, comma);
+  } @else if $category == "code" {
+    $font-stack: list.append($font-stack, "SF Mono", comma);
+    $font-stack: list.append($font-stack, Monaco, comma);
+    $font-stack: list.append($font-stack, Inconsolata, comma);
+    $font-stack: list.append($font-stack, "Roboto Mono", comma);
+    $font-stack: list.append($font-stack, "Source Code Pro", comma);
+    $font-stack: list.append($font-stack, monospace, comma);
+  }
+
+  font-family: $font-stack;
+  font-weight: $primary-weight;
+}
+
+// Usage: @include generate-font-classes($fonts-config-map, $fallback-order-list, $category-name);
+@mixin generate-font-classes($fonts-config, $fallback-order, $category) {
+  @each $key in $fallback-order {
+    $font: map.get($fonts-config, $key);
+    $name: map.get($font, "name");
+    $weights: map.get($font, "weights");
+
+    .#{$category}-#{$key}-font {
+      @include generate-font-stack(
+        $fonts-config,
+        $fallback-order,
+        $category,
+        $key
+      );
+    }
+
+    @each $weight, $weight-name in $weights {
+      .#{$category}-#{$key}-#{$weight-name} {
+        @include generate-font-stack(
+          $fonts-config,
+          $fallback-order,
+          $category,
+          $key,
+          $weight
+        );
+      }
+    }
+  }
+
+  .#{$category}-font {
+    @include generate-font-stack(
+      $fonts-config,
+      $fallback-order,
+      $category,
+      list.nth($fallback-order, 1)
+    );
+  }
+
+  @each $weight in (300, 400, 500, 600, 700) {
+    .#{$category}-font-#{$weight} {
+      @include generate-font-stack(
+        $fonts-config,
+        $fallback-order,
+        $category,
+        list.nth($fallback-order, 1),
+        $weight
+      );
+    }
+  }
+}
