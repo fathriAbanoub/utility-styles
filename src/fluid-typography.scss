@@ -1,0 +1,136 @@
+// Fluid Typography System with Perfect Scaling
+// Automatically scales typography based on viewport
+
+:root {
+  // Fluid font sizes using clamp()
+  --font-size-xs-fluid: clamp(0.7rem, 0.66rem + 0.2vw, 0.75rem);
+  --font-size-sm-fluid: clamp(0.8rem, 0.74rem + 0.3vw, 0.875rem);
+  --font-size-base-fluid: clamp(0.9rem, 0.83rem + 0.35vw, 1rem);
+  --font-size-lg-fluid: clamp(1rem, 0.91rem + 0.45vw, 1.125rem);
+  --font-size-xl-fluid: clamp(1.1rem, 0.98rem + 0.6vw, 1.25rem);
+  --font-size-2xl-fluid: clamp(1.3rem, 1.12rem + 0.9vw, 1.5rem);
+  --font-size-3xl-fluid: clamp(1.6rem, 1.32rem + 1.4vw, 1.875rem);
+  --font-size-4xl-fluid: clamp(2rem, 1.6rem + 2vw, 2.25rem);
+  --font-size-5xl-fluid: clamp(2.5rem, 2rem + 2.5vw, 3rem);
+  
+  // Fluid line heights
+  --line-height-tight-fluid: clamp(1.1, 1.05 + 0.25vw, 1.25);
+  --line-height-normal-fluid: clamp(1.3, 1.25 + 0.25vw, 1.5);
+  --line-height-relaxed-fluid: clamp(1.5, 1.45 + 0.25vw, 1.625);
+  
+  // Fluid spacing for typography
+  --letter-spacing-tight: -0.025em;
+  --letter-spacing-normal: 0em;
+  --letter-spacing-wide: 0.025em;
+  --letter-spacing-wider: 0.05em;
+}
+
+// Fluid typography utility classes
+.text-xs-fluid {
+  font-size: var(--font-size-xs-fluid);
+  line-height: var(--line-height-tight-fluid);
+}
+
+.text-sm-fluid {
+  font-size: var(--font-size-sm-fluid);
+  line-height: var(--line-height-normal-fluid);
+}
+
+.text-base-fluid {
+  font-size: var(--font-size-base-fluid);
+  line-height: var(--line-height-normal-fluid);
+}
+
+.text-lg-fluid {
+  font-size: var(--font-size-lg-fluid);
+  line-height: var(--line-height-normal-fluid);
+}
+
+.text-xl-fluid {
+  font-size: var(--font-size-xl-fluid);
+  line-height: var(--line-height-tight-fluid);
+}
+
+.text-2xl-fluid {
+  font-size: var(--font-size-2xl-fluid);
+  line-height: var(--line-height-tight-fluid);
+}
+
+.text-3xl-fluid {
+  font-size: var(--font-size-3xl-fluid);
+  line-height: var(--line-height-tight-fluid);
+}
+
+.text-4xl-fluid {
+  font-size: var(--font-size-4xl-fluid);
+  line-height: var(--line-height-tight-fluid);
+}
+
+.text-5xl-fluid {
+  font-size: var(--font-size-5xl-fluid);
+  line-height: var(--line-height-tight-fluid);
+}
+
+// Reading distance optimization
+.text-reading-optimal {
+  font-size: var(--font-size-base-fluid);
+  line-height: var(--line-height-relaxed-fluid);
+  max-width: 65ch; // Optimal reading width
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+// Typography rhythm preservation
+.typography-rhythm {
+  h1, .h1 {
+    font-size: var(--font-size-4xl-fluid);
+    line-height: var(--line-height-tight-fluid);
+    margin-bottom: calc(var(--space-6) * 1.2);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+  
+  h2, .h2 {
+    font-size: var(--font-size-3xl-fluid);
+    line-height: var(--line-height-tight-fluid);
+    margin-bottom: var(--space-6);
+    letter-spacing: var(--letter-spacing-tight);
+  }
+  
+  h3, .h3 {
+    font-size: var(--font-size-2xl-fluid);
+    line-height: var(--line-height-normal-fluid);
+    margin-bottom: var(--space-4);
+  }
+  
+  h4, .h4 {
+    font-size: var(--font-size-xl-fluid);
+    line-height: var(--line-height-normal-fluid);
+    margin-bottom: var(--space-3);
+  }
+  
+  p, .p {
+    font-size: var(--font-size-base-fluid);
+    line-height: var(--line-height-relaxed-fluid);
+    margin-bottom: var(--space-4);
+    max-width: 65ch;
+  }
+  
+  small, .small {
+    font-size: var(--font-size-sm-fluid);
+    line-height: var(--line-height-normal-fluid);
+  }
+}
+
+// Responsive typography adjustments
+@media (max-width: 640px) {
+  :root {
+    --letter-spacing-tight: -0.015em;
+    --letter-spacing-normal: 0.01em;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --letter-spacing-tight: -0.035em;
+    --letter-spacing-wide: 0.035em;
+  }
+}

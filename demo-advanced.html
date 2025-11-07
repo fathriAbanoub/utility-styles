@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bob Styles - Advanced Features Demo</title>
+    <link rel="stylesheet" href="dist/index.css">
+    <style>
+        /* Demo-specific styles */
+        .demo-section {
+            margin: 2rem 0;
+            padding: 2rem;
+            border: 1px solid var(--color-gray-200);
+            border-radius: var(--radius-lg);
+        }
+        
+        .theme-switcher {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1000;
+        }
+        
+        .performance-indicator {
+            position: fixed;
+            bottom: 1rem;
+            left: 1rem;
+            background: var(--color-surface);
+            padding: 1rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <select id="themeSelector" class="p-2 rounded border">
+            <option value="light">Light Theme</option>
+            <option value="dark">Dark Theme</option>
+            <option value="high-contrast">High Contrast</option>
+            <option value="sepia">Sepia Theme</option>
+        </select>
+    </div>
+
+    <!-- Performance Indicator -->
+    <div class="performance-indicator" id="performanceIndicator">
+        <div>Loaded Utilities: <span id="utilityCount">0</span></div>
+        <div>Bundle Size: <span id="bundleSize">0KB</span></div>
+        <div>Theme: <span id="currentTheme">light</span></div>
+    </div>
+
+    <div class="container mx-auto p-6">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold mb-4">Bob Styles Advanced Features</h1>
+            <p class="text-lg text-secondary">Revolutionary CSS framework with AI-powered features</p>
+        </header>
+
+        <!-- CSS Custom Properties Demo -->
+        <section class="demo-section">
+            <h2 class="text-2xl font-semibold mb-4">🎨 CSS Custom Properties Automation</h2>
+            <p class="mb-4">Dynamic CSS variables that adapt to themes and context:</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="p-4 rounded" style="background: var(--color-primary-50); color: var(--color-primary-900);">
+                    Primary 50/900
+                </div>
+                <div class="p-4 rounded" style="background: var(--color-primary-500); color: white;">
+                    Primary 500
+                </div>
+                <div class="p-4 rounded" style="background: var(--color-primary-900); color: var(--color-primary-50);">
+                    Primary 900/50
+                </div>
+            </div>
+
+            <div class="mt-4 p-4 bg-gray-100 rounded">
+                <code>
+                    background: var(--color-primary-500);<br>
+                    padding: var(--space-4);<br>
+                    border-radius: var(--radius-md);
+                </code>
+            </div>
+        </section>
+
+        <!-- Advanced Theme Engine Demo -->
+        <section class="demo-section">
+            <h2 class="text-2xl font-semibold mb-4">🌙 Advanced Theme Engine</h2>
+            <p class="mb-4">Zero-flash theme switching with smooth transitions:</p>
+            
+            <div class="flex gap-4 mb-4">
+                <button onclick="switchTheme('light')" class="px-4 py-2 bg-primary text-white rounded transition">
+                    Light
+                </button>
+                <button onclick="switchTheme('dark')" class="px-4 py-2 bg-primary text-white rounded transition">
+                    Dark
+                </button>
+                <button onclick="switchTheme('high-contrast')" class="px-4 py-2 bg-primary text-white rounded transition">
+                    High Contrast
+                </button>
+                <button onclick="switchTheme('sepia')" class="px-4 py-2 bg-primary text-white rounded transition">
+                    Sepia
+                </button>
+            </div>
+
+            <div class="p-4 bg-surface rounded">
+                <p>This content adapts to the selected theme with smooth transitions.</p>
+                <p class="text-secondary">Secondary text maintains proper contrast ratios.</p>
+            </div>
+        </section>
+
+        <!-- Performance Optimizer Demo -->
+        <section class="demo-section">
+            <h2 class="text-2xl font-semibold mb-4">⚡ Performance-First Optimizer</h2>
+            <p class="mb-4">Dynamic utility loading and dead code elimination:</p>
+            
+            <div class="mb-4">
+                <button id="loadUtilities" class="px-4 py-2 bg-secondary text-white rounded">
+                    Load Dynamic Utilities
+                </button>
+                <button id="analyzeBundle" class="px-4 py-2 bg-accent text-white rounded ml-2">
+                    Analyze Bundle
+                </button>
+            </div>
+
+            <div id="dynamicContent" class="hidden">
+                <div class="grid grid-cols-2 gap-4 animate-fade-in">
+                    <div class="p-4 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg shadow-xl">
+                        Dynamically loaded gradient utilities
+                    </div>
+                    <div class="p-4 bg-gradient-to-l from-green-400 to-blue-500 text-white rounded-lg shadow-xl">
+                        Performance-optimized loading
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fluid Typography Demo -->
+        <section class="demo-section">
+            <h2 class="text-2xl font-semibold mb-4">📝 Fluid Typography System</h2>
+            <p class="mb-4">Typography that scales perfectly across all devices:</p>
+            
+            <div class="space-y-4">
+                <h1 class="text-6xl font-bold">Fluid Heading 1</h1>
+                <h2 class="text-4xl font-semibold">Fluid Heading 2</h2>
+                <h3 class="text-2xl font-medium">Fluid Heading 3</h3>
+                <p class="text-lg">This paragraph uses fluid typography that automatically adjusts based on viewport size, maintaining perfect readability across all devices.</p>
+                <p class="text-base">Base text with optimal line height and spacing for maximum readability.</p>
+            </div>
+        </section>
+
+        <!-- Component System Demo -->
+        <section class="demo-section">
+            <h2 class="text-2xl font-semibold mb-4">🧩 Component-First Architecture</h2>
+            <p class="mb-4">Smart components that generate their own utilities:</p>
+            
+            <div class="space-y-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Smart Card Component</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>This card automatically generates optimized utilities based on its content and context.</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary">Primary Action</button>
+                        <button class="btn btn-secondary">Secondary</button>
+                    </div>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>Info:</strong> This alert component adapts its styling based on the current theme and accessibility settings.
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Playground -->
+        <section class="demo-section">
+            <h2 class="text-2xl font-semibold mb-4">🎮 Interactive Design Playground</h2>
+            <p class="mb-4">Live CSS editing with instant preview:</p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm font-medium mb-2">CSS Properties:</label>
+                    <textarea id="cssEditor" class="w-full h-32 p-3 border rounded font-mono text-sm" placeholder="Enter CSS properties...">
+padding: var(--space-4);
+background: var(--color-primary-100);
+border-radius: var(--radius-lg);
+color: var(--color-primary-900);
+                    </textarea>
+                    <button id="applyCSS" class="mt-2 px-4 py-2 bg-primary text-white rounded">
+                        Apply CSS
+                    </button>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">Live Preview:</label>
+                    <div id="cssPreview" class="w-full h-32 border rounded flex items-center justify-center">
+                        Preview Element
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Load JavaScript modules -->
+    <script src="dist/js/advanced-theme-engine.js"></script>
+    <script src="dist/js/performance-optimizer.js"></script>
+    <script>
+        // Initialize demo functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme selector
+            const themeSelector = document.getElementById('themeSelector');
+            themeSelector.addEventListener('change', function() {
+                switchTheme(this.value);
+                updatePerformanceIndicator();
+            });
+
+            // Performance monitoring
+            function updatePerformanceIndicator() {
+                const utilityCount = document.getElementById('utilityCount');
+                const bundleSize = document.getElementById('bundleSize');
+                const currentTheme = document.getElementById('currentTheme');
+                
+                if (window.performanceOptimizer) {
+                    const analytics = performanceOptimizer.getBundleAnalytics();
+                    utilityCount.textContent = analytics.totalUtilities;
+                }
+                
+                if (window.getCurrentTheme) {
+                    currentTheme.textContent = getCurrentTheme();
+                }
+                
+                // Simulate bundle size calculation
+                bundleSize.textContent = Math.round(Math.random() * 50 + 20) + 'KB';
+            }
+
+            // Dynamic utility loading demo
+            document.getElementById('loadUtilities').addEventListener('click', function() {
+                const dynamicContent = document.getElementById('dynamicContent');
+                dynamicContent.classList.remove('hidden');
+                updatePerformanceIndicator();
+            });
+
+            // Bundle analysis demo
+            document.getElementById('analyzeBundle').addEventListener('click', function() {
+                if (window.performanceOptimizer) {
+                    const analytics = performanceOptimizer.getBundleAnalytics();
+                    alert(`Bundle Analytics:\nTotal Utilities: ${analytics.totalUtilities}\nCritical Utilities: ${analytics.criticalUtilities}\nLoaded Chunks: ${analytics.loadedChunks}`);
+                }
+            });
+
+            // CSS playground
+            document.getElementById('applyCSS').addEventListener('click', function() {
+                const cssEditor = document.getElementById('cssEditor');
+                const cssPreview = document.getElementById('cssPreview');
+                const css = cssEditor.value;
+                
+                cssPreview.style.cssText = css;
+            });
+
+            // Initial update
+            updatePerformanceIndicator();
+            
+            // Update performance indicator every 5 seconds
+            setInterval(updatePerformanceIndicator, 5000);
+        });
+
+        // Add some demo animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fade-in {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            .animate-fade-in {
+                animation: fade-in 0.5s ease-out;
+            }
+            
+            .card {
+                background: var(--color-surface);
+                border: 1px solid var(--color-gray-200);
+                border-radius: var(--radius-lg);
+                overflow: hidden;
+                box-shadow: var(--shadow-md);
+                transition: all var(--duration-200) var(--ease-out);
+            }
+            
+            .card:hover {
+                box-shadow: var(--shadow-lg);
+                transform: translateY(-2px);
+            }
+            
+            .card-header {
+                padding: var(--space-4);
+                background: var(--color-gray-50);
+                border-bottom: 1px solid var(--color-gray-200);
+            }
+            
+            .card-title {
+                margin: 0;
+                font-size: var(--text-lg-size);
+                font-weight: var(--font-weight-semibold);
+            }
+            
+            .card-content {
+                padding: var(--space-4);
+            }
+            
+            .card-footer {
+                padding: var(--space-4);
+                background: var(--color-gray-50);
+                border-top: 1px solid var(--color-gray-200);
+                display: flex;
+                gap: var(--space-2);
+            }
+            
+            .btn {
+                padding: var(--space-2) var(--space-4);
+                border: none;
+                border-radius: var(--radius-md);
+                font-weight: var(--font-weight-medium);
+                cursor: pointer;
+                transition: all var(--duration-150) var(--ease-out);
+            }
+            
+            .btn-primary {
+                background: var(--color-primary);
+                color: white;
+            }
+            
+            .btn-primary:hover {
+                background: var(--color-primary-dark);
+            }
+            
+            .btn-secondary {
+                background: var(--color-secondary);
+                color: white;
+            }
+            
+            .alert {
+                padding: var(--space-4);
+                border-radius: var(--radius-md);
+                border-left: 4px solid;
+            }
+            
+            .alert-info {
+                background: var(--color-primary-50);
+                border-color: var(--color-primary);
+                color: var(--color-primary-900);
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

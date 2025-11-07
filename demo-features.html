@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bob Styles - Advanced Features Demo</title>
+    <link rel="stylesheet" href="dist/index.css">
+    <style>
+        .demo-section {
+            margin: 2rem 0;
+            padding: 2rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+        }
+        
+        .playground-interface {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .playground-controls {
+            background: #f9fafb;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        .category {
+            margin-bottom: 1rem;
+        }
+        
+        .utility-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .utility-btn {
+            padding: 0.25rem 0.5rem;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.75rem;
+        }
+        
+        .utility-btn:hover {
+            background: #2563eb;
+        }
+        
+        .playground-preview {
+            background: white;
+            padding: 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+        }
+        
+        .preview-element {
+            padding: 1rem;
+            border: 2px dashed #9ca3af;
+            border-radius: 4px;
+            min-height: 200px;
+        }
+        
+        .playground-output {
+            grid-column: 1 / -1;
+            background: #1f2937;
+            color: #f9fafb;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        .playground-output pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+        
+        .custom-input {
+            margin-top: 1rem;
+        }
+        
+        .custom-input textarea {
+            width: 100%;
+            height: 60px;
+            padding: 0.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+        }
+        
+        .applied-classes {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            background: #f3f4f6;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto p-6">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold mb-4">Bob Styles - Advanced Features</h1>
+            <p class="text-lg text-gray-600">Experience the next generation of CSS utilities with AI-powered features</p>
+        </header>
+
+        <!-- Context-Aware Theme Engine Demo -->
+        <section class="demo-section">
+            <h2 class="text-2xl font-bold mb-4">🌈 Context-Aware Theme Engine</h2>
+            <p class="mb-4">Automatically adapts themes based on time of day, accessibility preferences, and device capabilities.</p>
+            
+            <div class="flex gap-4 mb-4">
+                <button onclick="contextAwareTheme.setUserPreference('brightness', '1.2')" class="bg-blue-500 text-white px-4 py-2 rounded">
+                    Increase Brightness
+                </button>
+                <button onclick="contextAwareTheme.setUserPreference('contrast', 'high')" class="bg-green-500 text-white px-4 py-2 rounded">
+                    High Contrast
+                </button>
+                <button onclick="alert(JSON.stringify(contextAwareTheme.getRecommendations(), null, 2))" class="bg-purple-500 text-white px-4 py-2 rounded">
+                    Get Recommendations
+                </button>
+            </div>
+            
+            <div class="bg-gray-100 p-4 rounded">
+                <p>Current context automatically detected:</p>
+                <ul class="list-disc list-inside mt-2">
+                    <li>Time of day: <span id="time-context">Loading...</span></li>
+                    <li>Color scheme preference: <span id="color-scheme">Loading...</span></li>
+                    <li>Device type: <span id="device-type">Loading...</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Interactive CSS Playground -->
+        <section class="demo-section">
+            <h2 class="text-2xl font-bold mb-4">🛠️ Interactive CSS Playground</h2>
+            <p class="mb-4">Experiment with utility classes and see live previews with generated CSS.</p>
+            
+            <div id="css-playground"></div>
+        </section>
+
+        <!-- Performance Monitor -->
+        <section class="demo-section">
+            <h2 class="text-2xl font-bold mb-4">📊 Real-time Performance Monitor</h2>
+            <p class="mb-4">Live analytics for CSS bundle size, unused styles, and rendering performance.</p>
+            
+            <div class="flex gap-4 mb-4">
+                <button onclick="performanceMonitor.analyzeUnusedCSS()" class="bg-red-500 text-white px-4 py-2 rounded">
+                    Analyze Unused CSS
+                </button>
+                <button onclick="performanceMonitor.identifyCriticalCSS()" class="bg-yellow-500 text-white px-4 py-2 rounded">
+                    Identify Critical CSS
+                </button>
+                <button onclick="console.log(performanceMonitor.exportMetrics())" class="bg-indigo-500 text-white px-4 py-2 rounded">
+                    Export Metrics
+                </button>
+            </div>
+            
+            <p class="text-sm text-gray-600">Performance dashboard is visible in the top-right corner of the page.</p>
+        </section>
+
+        <!-- Smart Utility Assistant -->
+        <section class="demo-section">
+            <h2 class="text-2xl font-bold mb-4">🧠 Smart Utility Assistant</h2>
+            <p class="mb-4">AI-powered suggestions for optimal utility class combinations with conflict detection.</p>
+            
+            <div class="flex gap-4 mb-4">
+                <button onclick="smartUtilities.analyzeAndDisplay(['flex', 'block', 'text-center'])" class="bg-orange-500 text-white px-4 py-2 rounded">
+                    Demo Conflict Detection
+                </button>
+                <button onclick="console.log(smartUtilities.suggestClasses(['bg-white', 'rounded']))" class="bg-teal-500 text-white px-4 py-2 rounded">
+                    Get Pattern Suggestions
+                </button>
+                <button onclick="console.log(smartUtilities.exportAnalytics())" class="bg-pink-500 text-white px-4 py-2 rounded">
+                    Export Analytics
+                </button>
+            </div>
+            
+            <p class="text-sm text-gray-600">Smart utility interface is available in the bottom-left corner of the page.</p>
+        </section>
+
+        <!-- Feature Showcase -->
+        <section class="demo-section">
+            <h2 class="text-2xl font-bold mb-4">✨ Feature Showcase</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="font-bold text-lg mb-2">Context Awareness</h3>
+                    <p class="text-sm text-gray-600">Automatically adapts to user preferences, time of day, and device capabilities.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="font-bold text-lg mb-2">Live Preview</h3>
+                    <p class="text-sm text-gray-600">Real-time CSS playground with instant visual feedback and code generation.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="font-bold text-lg mb-2">Performance Analytics</h3>
+                    <p class="text-sm text-gray-600">Monitor CSS bundle size, unused styles, and rendering performance in real-time.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="font-bold text-lg mb-2">Smart Suggestions</h3>
+                    <p class="text-sm text-gray-600">AI-powered utility class recommendations based on usage patterns.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="font-bold text-lg mb-2">Conflict Detection</h3>
+                    <p class="text-sm text-gray-600">Automatically detect and resolve conflicting CSS utility classes.</p>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h3 class="font-bold text-lg mb-2">Pattern Recognition</h3>
+                    <p class="text-sm text-gray-600">Learn from common UI patterns to suggest optimal class combinations.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Load JavaScript modules -->
+    <script src="dist/js/theme-engine.js"></script>
+    <script src="dist/js/context-aware-theme.js"></script>
+    <script src="dist/js/css-playground.js"></script>
+    <script src="dist/js/performance-monitor.js"></script>
+    <script src="dist/js/smart-utilities.js"></script>
+
+    <script>
+        // Initialize context display
+        document.addEventListener('DOMContentLoaded', () => {
+            // Update context information
+            if (window.contextAwareTheme) {
+                document.getElementById('time-context').textContent = contextAwareTheme.contexts.time;
+                document.getElementById('color-scheme').textContent = contextAwareTheme.contexts.accessibility.colorScheme;
+                document.getElementById('device-type').textContent = contextAwareTheme.contexts.device.mobile ? 'Mobile' : 'Desktop';
+            }
+        });
+    </script>
+</body>
+</html>

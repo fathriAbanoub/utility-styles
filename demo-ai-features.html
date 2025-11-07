@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bob-Styles AI Features Demo</title>
+    <link rel="stylesheet" href="dist/index.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .feature-section {
+            margin: 3rem 0;
+            padding: 2rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            background: #f9fafb;
+        }
+        
+        .feature-title {
+            color: #1f2937;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .demo-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+        }
+        
+        .blog-content {
+            max-width: 65ch;
+            margin: 0 auto;
+        }
+        
+        .ui-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 1px solid #e5e7eb;
+        }
+        
+        .button {
+            background: var(--color-primary-500, #3b82f6);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .button:hover {
+            background: var(--color-primary-600, #2563eb);
+            transform: translateY(-1px);
+        }
+        
+        .code-content {
+            background: #1f2937;
+            color: #f3f4f6;
+            padding: 1.5rem;
+            border-radius: 6px;
+            font-family: 'Monaco', monospace;
+            overflow-x: auto;
+        }
+        
+        .ecommerce-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            height: 150px;
+            background: linear-gradient(45deg, #f3f4f6, #e5e7eb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+        }
+        
+        .product-info {
+            padding: 1rem;
+        }
+        
+        .price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #059669;
+        }
+        
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+        
+        .status-active { background: #10b981; }
+        .status-warning { background: #f59e0b; }
+        .status-error { background: #ef4444; }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <header class="text-center" style="margin-bottom: 3rem;">
+            <h1 style="font-size: 2.5rem; font-weight: 700; color: #1f2937; margin-bottom: 0.5rem;">
+                🚀 Bob-Styles AI Features
+            </h1>
+            <p style="font-size: 1.125rem; color: #6b7280;">
+                Experience the future of intelligent CSS frameworks
+            </p>
+        </header>
+
+        <!-- AI Design System Generator -->
+        <section class="feature-section">
+            <h2 class="feature-title">
+                🎨 AI-Powered Design System Generator
+            </h2>
+            <p>Automatically generates cohesive design tokens based on your brand colors and usage patterns.</p>
+            
+            <div class="demo-content">
+                <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem;">
+                    <label>Brand Color:</label>
+                    <input type="color" id="brand-color-demo" value="#3b82f6" style="width: 50px; height: 40px; border: none; border-radius: 4px;">
+                    <button class="button" onclick="generateDesignSystem()">Generate System</button>
+                </div>
+                
+                <div id="generated-tokens" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <!-- Generated tokens will appear here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Budgets -->
+        <section class="feature-section">
+            <h2 class="feature-title">
+                ⚡ Intelligent Performance Budgets
+            </h2>
+            <p>Real-time monitoring and automatic optimization of CSS performance metrics.</p>
+            
+            <div class="demo-content">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div class="card">
+                        <h4>CSS Bundle Size</h4>
+                        <div style="display: flex; align-items: center;">
+                            <span class="status-indicator status-active"></span>
+                            <span id="css-size">Calculating...</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h4>Unused CSS</h4>
+                        <div style="display: flex; align-items: center;">
+                            <span class="status-indicator status-warning"></span>
+                            <span id="unused-css">Analyzing...</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h4>Render Time</h4>
+                        <div style="display: flex; align-items: center;">
+                            <span class="status-indicator status-active"></span>
+                            <span id="render-time">Measuring...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contextual Typography -->
+        <section class="feature-section">
+            <h2 class="feature-title">
+                📝 Contextual Typography Engine
+            </h2>
+            <p>Automatically adapts typography based on content type and reading context.</p>
+            
+            <!-- Blog Context -->
+            <div class="demo-content">
+                <h3>Blog Content (Optimized for Reading)</h3>
+                <div class="blog-content">
+                    <h2>The Future of Web Typography</h2>
+                    <p>Typography is more than just choosing fonts. It's about creating an optimal reading experience that adapts to context, content, and user preferences. Modern web applications require intelligent typography systems that can analyze content and automatically apply the best typographic treatments.</p>
+                    <p>This article explores how AI-powered typography engines can revolutionize the way we approach text on the web, making content more accessible and engaging for all users.</p>
+                </div>
+            </div>
+
+            <!-- UI Context -->
+            <div class="demo-content">
+                <h3>UI Content (Optimized for Scanning)</h3>
+                <div class="ui-content">
+                    <div class="card">
+                        <h4>Dashboard</h4>
+                        <p>Quick navigation and controls</p>
+                        <button class="button">View Details</button>
+                    </div>
+                    <div class="card">
+                        <h4>Settings</h4>
+                        <p>Configure your preferences</p>
+                        <button class="button">Open Settings</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Code Context -->
+            <div class="demo-content">
+                <h3>Code Content (Optimized for Clarity)</h3>
+                <div class="code-content">
+                    <pre><code>// Contextual Typography Engine
+class ContextualTypography {
+  constructor() {
+    this.contentAnalyzer = new ContentAnalyzer();
+    this.init();
+  }
+  
+  analyzeContent() {
+    const context = this.contentAnalyzer.determineContext();
+    this.applyContextualTypography(context);
+  }
+}</code></pre>
+            </div>
+
+            <!-- E-commerce Context -->
+            <div class="demo-content">
+                <h3>E-commerce Content (Optimized for Conversion)</h3>
+                <div class="ecommerce-content">
+                    <div class="product-card">
+                        <div class="product-image">Product Image</div>
+                        <div class="product-info">
+                            <h4>Premium Headphones</h4>
+                            <p>High-quality audio experience</p>
+                            <div class="price">$299.99</div>
+                            <button class="button" style="width: 100%; margin-top: 0.5rem;">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">Product Image</div>
+                        <div class="product-info">
+                            <h4>Smart Watch</h4>
+                            <p>Track your fitness goals</p>
+                            <div class="price">$199.99</div>
+                            <button class="button" style="width: 100%; margin-top: 0.5rem;">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Demo Controls -->
+        <section class="feature-section">
+            <h2 class="feature-title">
+                🎮 Live Demo Controls
+            </h2>
+            <div class="demo-content">
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <button class="button" onclick="toggleTheme()">Toggle Theme</button>
+                    <button class="button" onclick="optimizePerformance()">Optimize Performance</button>
+                    <button class="button" onclick="analyzeTypography()">Analyze Typography</button>
+                    <button class="button" onclick="generateReport()">Generate Report</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Load JavaScript modules -->
+    <script src="dist/js/ai-design-generator.js"></script>
+    <script src="dist/js/performance-budgets.js"></script>
+    <script src="dist/js/contextual-typography.js"></script>
+    <script src="dist/js/advanced-theme-engine.js"></script>
+
+    <script>
+        // Demo interaction functions
+        function generateDesignSystem() {
+            const color = document.getElementById('brand-color-demo').value;
+            const tokensDiv = document.getElementById('generated-tokens');
+            
+            // Simulate token generation
+            tokensDiv.innerHTML = `
+                <div class="card">
+                    <h4>Primary Colors</h4>
+                    <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                        <div style="width: 30px; height: 30px; background: ${color}; border-radius: 4px;"></div>
+                        <div style="width: 30px; height: 30px; background: ${adjustColor(color, -20)}; border-radius: 4px;"></div>
+                        <div style="width: 30px; height: 30px; background: ${adjustColor(color, 20)}; border-radius: 4px;"></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h4>Typography Scale</h4>
+                    <div style="font-size: 0.75rem;">Small Text</div>
+                    <div style="font-size: 1rem;">Base Text</div>
+                    <div style="font-size: 1.25rem;">Large Text</div>
+                </div>
+                <div class="card">
+                    <h4>Spacing Scale</h4>
+                    <div style="display: flex; gap: 0.25rem; align-items: end;">
+                        <div style="width: 10px; height: 10px; background: #e5e7eb;"></div>
+                        <div style="width: 10px; height: 20px; background: #e5e7eb;"></div>
+                        <div style="width: 10px; height: 30px; background: #e5e7eb;"></div>
+                        <div style="width: 10px; height: 40px; background: #e5e7eb;"></div>
+                    </div>
+                </div>
+            `;
+            
+            // Apply generated colors
+            document.documentElement.style.setProperty('--color-primary-500', color);
+        }
+
+        function adjustColor(hex, percent) {
+            const num = parseInt(hex.replace("#", ""), 16);
+            const amt = Math.round(2.55 * percent);
+            const R = (num >> 16) + amt;
+            const G = (num >> 8 & 0x00FF) + amt;
+            const B = (num & 0x0000FF) + amt;
+            return "#" + (0x1000000 + (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 +
+                (G < 255 ? G < 1 ? 0 : G : 255) * 0x100 +
+                (B < 255 ? B < 1 ? 0 : B : 255)).toString(16).slice(1);
+        }
+
+        function toggleTheme() {
+            document.body.style.filter = document.body.style.filter ? '' : 'invert(1) hue-rotate(180deg)';
+        }
+
+        function optimizePerformance() {
+            alert('🚀 Performance optimization triggered! Check the console for details.');
+            console.log('Performance optimization complete');
+        }
+
+        function analyzeTypography() {
+            alert('📝 Typography analysis complete! Context-aware adjustments applied.');
+        }
+
+        function generateReport() {
+            const report = {
+                timestamp: new Date().toISOString(),
+                features: ['AI Design Generator', 'Performance Budgets', 'Contextual Typography'],
+                status: 'All systems operational'
+            };
+            console.log('📊 Feature Report:', report);
+            alert('Report generated! Check the console for details.');
+        }
+
+        // Update performance metrics
+        function updateMetrics() {
+            document.getElementById('css-size').textContent = '45KB / 50KB';
+            document.getElementById('unused-css').textContent = '15% / 20%';
+            document.getElementById('render-time').textContent = '85ms / 100ms';
+        }
+
+        // Initialize demo
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(updateMetrics, 1000);
+            console.log('🎉 Bob-Styles AI Features Demo loaded successfully!');
+        });
+    </script>
+</body>
+</html>

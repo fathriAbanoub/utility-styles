@@ -1,0 +1,126 @@
+// Navigation Components
+// E-commerce Navigation Styles
+
+.e-nav-1-mobile-toggle {
+  display: none;
+  cursor: pointer;
+  
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+.e-nav-1-mobile-menu {
+  display: none;
+  
+  &.active {
+    display: block;
+  }
+  
+  @media (max-width: 768px) {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+  }
+}
+
+// E-learning Navigation Styles
+.el-nav-1-mobile-toggle {
+  display: none;
+  cursor: pointer;
+  
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+.el-nav-1-mobile-menu {
+  display: none;
+  
+  &.active {
+    display: block;
+  }
+  
+  @media (max-width: 768px) {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+  }
+}
+
+// Vendor Dashboard Navigation Styles
+.vd-nav-1-mobile-toggle {
+  display: none;
+  cursor: pointer;
+  
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+.vd-nav-1-sidebar {
+  transition: transform 0.3s ease;
+  
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    transform: translateX(-100%);
+    z-index: 60;
+    
+    &.active {
+      transform: translateX(0);
+    }
+  }
+}
+
+.vd-nav-1-overlay {
+  display: none;
+  
+  &.active {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 50;
+  }
+}
+
+.vd-nav-2-mobile-toggle {
+  display: none;
+  cursor: pointer;
+  
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+.vd-nav-2-menu {
+  display: none;
+  
+  &.active {
+    display: block;
+  }
+  
+  @media (max-width: 768px) {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+  }
+}

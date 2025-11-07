@@ -1,0 +1,311 @@
+// Component-First Architecture with Auto-Generation
+// Smart component composition with conflict resolution
+
+// Base component system
+.component {
+  // Base component styles
+  position: relative;
+  box-sizing: border-box;
+  
+  // Auto-generate utilities for components
+  &--flex {
+    display: flex;
+    
+    &-center {
+      align-items: center;
+      justify-content: center;
+    }
+    
+    &-between {
+      justify-content: space-between;
+    }
+    
+    &-col {
+      flex-direction: column;
+    }
+  }
+  
+  &--grid {
+    display: grid;
+    
+    &-auto {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-4);
+    }
+    
+    &-2 {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+    }
+    
+    &-3 {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+    }
+  }
+  
+  &--card {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-6);
+    transition: var(--transition-base);
+    
+    &:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-2px);
+    }
+    
+    &-compact {
+      padding: var(--space-4);
+    }
+    
+    &-elevated {
+      box-shadow: var(--shadow-xl);
+    }
+  }
+  
+  &--button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-3) var(--space-6);
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-base);
+    line-height: 1;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-decoration: none;
+    
+    &-primary {
+      background: var(--color-primary);
+      color: var(--color-white);
+      
+      &:hover {
+        background: var(--color-primary-dark);
+      }
+    }
+    
+    &-secondary {
+      background: var(--color-gray-200);
+      color: var(--color-gray-800);
+      
+      &:hover {
+        background: var(--color-gray-300);
+      }
+    }
+    
+    &-outline {
+      background: transparent;
+      border: 2px solid var(--color-primary);
+      color: var(--color-primary);
+      
+      &:hover {
+        background: var(--color-primary);
+        color: var(--color-white);
+      }
+    }
+    
+    &-sm {
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--font-size-sm);
+    }
+    
+    &-lg {
+      padding: var(--space-4) var(--space-8);
+      font-size: var(--font-size-lg);
+    }
+  }
+  
+  &--input {
+    width: 100%;
+    padding: var(--space-3);
+    border: 2px solid var(--color-gray-300);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    transition: var(--transition-fast);
+    
+    &:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+    
+    &-error {
+      border-color: var(--color-error);
+      
+      &:focus {
+        border-color: var(--color-error);
+        box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+      }
+    }
+  }
+  
+  &--modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-base);
+    
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    &-content {
+      background: var(--color-white);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      max-width: 90vw;
+      max-height: 90vh;
+      overflow: auto;
+      transform: scale(0.9);
+      transition: var(--transition-base);
+    }
+    
+    &.active &-content {
+      transform: scale(1);
+    }
+  }
+  
+  &--dropdown {
+    position: relative;
+    display: inline-block;
+    
+    &-content {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 200px;
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      z-index: var(--z-dropdown);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: var(--transition-fast);
+    }
+    
+    &.active &-content {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  }
+  
+  &--nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    
+    &-vertical {
+      flex-direction: column;
+      align-items: stretch;
+      gap: var(--space-2);
+    }
+    
+    &-item {
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--color-gray-700);
+      transition: var(--transition-fast);
+      
+      &:hover {
+        background: var(--color-gray-100);
+        color: var(--color-gray-900);
+      }
+      
+      &.active {
+        background: var(--color-primary);
+        color: var(--color-white);
+      }
+    }
+  }
+}
+
+// Smart component composition
+.component-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  
+  > * + * {
+    margin-top: 0; // Reset margins in stack
+  }
+}
+
+.component-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.component-sidebar {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-6);
+  align-items: start;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Auto-responsive components
+.component-auto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: var(--space-4);
+}
+
+// Component state management (CSS-only)
+.component-state {
+  &[data-state="loading"] {
+    opacity: 0.6;
+    pointer-events: none;
+    
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--color-primary);
+      border-top-color: rgba(0,0,0,0);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      transform: translate(-50%, -50%);
+    }
+  }
+  
+  &[data-state="error"] {
+    border-color: var(--color-error);
+    background: rgba(239, 68, 68, 0.05);
+  }
+  
+  &[data-state="success"] {
+    border-color: var(--color-success);
+    background: rgba(16, 185, 129, 0.05);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
