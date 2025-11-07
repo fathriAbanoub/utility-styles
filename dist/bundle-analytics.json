@@ -1,0 +1,19 @@
+{
+  "totalUtilities": 59,
+  "criticalUtilities": 0,
+  "chunks": [
+    "layout",
+    "spacing",
+    "typography",
+    "colors",
+    "borders",
+    "effects",
+    "animations"
+  ],
+  "unusedUtilities": [],
+  "sizeSavings": {
+    "originalSize": "34.65KB",
+    "optimizedSize": "6.39KB",
+    "savings": "81.56%"
+  }
+}

@@ -1,0 +1,36 @@
+.text-xs-fluid{font-size:var(--font-size-xs-fluid);line-height:var(--line-height-tight-fluid)}
+.text-sm-fluid{font-size:var(--font-size-sm-fluid);line-height:var(--line-height-normal-fluid)}
+.text-base-fluid{font-size:var(--font-size-base-fluid);line-height:var(--line-height-normal-fluid)}
+.text-lg-fluid{font-size:var(--font-size-lg-fluid);line-height:var(--line-height-normal-fluid)}
+.text-xl-fluid{font-size:var(--font-size-xl-fluid);line-height:var(--line-height-tight-fluid)}
+.text-2xl-fluid{font-size:var(--font-size-2xl-fluid);line-height:var(--line-height-tight-fluid)}
+.text-3xl-fluid{font-size:var(--font-size-3xl-fluid);line-height:var(--line-height-tight-fluid)}
+.text-4xl-fluid{font-size:var(--font-size-4xl-fluid);line-height:var(--line-height-tight-fluid)}
+.text-5xl-fluid{font-size:var(--font-size-5xl-fluid);line-height:var(--line-height-tight-fluid)}
+.text-reading-optimal{font-size:var(--font-size-base-fluid);line-height:var(--line-height-relaxed-fluid);max-width:65ch;letter-spacing:var(--letter-spacing-normal)}
+.text-center{text-align:center}
+.text-left{text-align:left}
+.text-right{text-align:right}
+.font-light{font-weight:var(--font-weight-light)}
+.font-normal{font-weight:var(--font-weight-normal)}
+.font-medium{font-weight:var(--font-weight-medium)}
+.font-semibold{font-weight:var(--font-weight-semibold)}
+.font-bold{font-weight:var(--font-weight-bold)}
+.text-sm{font-size:var(--font-size-sm)}
+.text-base{font-size:var(--font-size-base)}
+.text-lg{font-size:var(--font-size-lg)}
+.text-xl{font-size:var(--font-size-xl)}
+.text-2xl{font-size:var(--font-size-2xl)}
+.text-3xl{font-size:var(--font-size-3xl)}
+.font-inter{font-family:"Inter",sans-serif}
+.font-poppins{font-family:"Poppins",sans-serif}
+.font-montserrat{font-family:"Montserrat",sans-serif}
+.font-open-sans{font-family:"Open Sans",sans-serif}
+.font-heading{font-family:"Inter",sans-serif;font-weight:600;line-height:1.2}
+.font-subheading{font-family:"Inter",sans-serif;font-weight:500;line-height:1.3}
+.font-body{font-family:"Inter",sans-serif;font-weight:400;line-height:1.5}
+.font-price{font-family:"Inter",sans-serif;font-weight:700;line-height:1.2}
+.font-button{font-family:"Inter",sans-serif;font-weight:600;line-height:1.2;text-transform:uppercase;letter-spacing:.5px}
+.font-elegant{font-family:"Montserrat",sans-serif}
+.font-friendly{font-family:"Poppins",sans-serif}
+.font-readable{font-family:"Open Sans",sans-serif}

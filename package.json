@@ -33,7 +33,5 @@
   "devDependencies": {
     "sass": "^1.93.2"
   },
-  "dependencies": {
-    "lucide-react": "^0.548.0"
-  }
+  "dependencies": {}
 }

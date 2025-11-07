@@ -1,0 +1,9 @@
+.flex{display:flex}
+.flex-center{display:flex;align-items:center;justify-content:center}
+.flex-col{display:flex;flex-direction:column}
+.hidden{display:none}
+.block{display:block}
+.inline-block{display:inline-block}
+.relative{position:relative}
+.absolute{position:absolute}
+.sticky{position:sticky}

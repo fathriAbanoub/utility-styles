@@ -1,0 +1,7 @@
+.shadow{box-shadow:var(--shadow-base)}
+.shadow-md{box-shadow:var(--shadow-md)}
+.shadow-lg{box-shadow:var(--shadow-lg)}
+.opacity-0{opacity:0}
+.opacity-50{opacity:.5}
+.opacity-75{opacity:.75}
+.opacity-100{opacity:1}
